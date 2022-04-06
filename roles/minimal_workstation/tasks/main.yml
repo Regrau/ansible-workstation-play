@@ -1,0 +1,21 @@
+---
+# tasks file for minimal_workstation
+
+- name: Install base packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ base_packages }}"
+  become: yes
+
+- name: Setup zsh
+  ansible.builtin.import_tasks: "zsh.yml"
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Setup neovim
+  ansible.builtin.import_tasks: "nvim.yml"
+  become: true
+    become_user: "{{ user.name }}"
+
+

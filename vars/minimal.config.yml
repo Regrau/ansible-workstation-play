@@ -1,0 +1,18 @@
+---
+base_packages:
+  - neovim
+  - htop
+  - rsync
+  - ranger
+  - zsh
+  - git
+  - fzf
+  - fzf-zsh-completion
+  - terminfo
+
+user:
+  name: regrau
+  full_name: Georg Grauberger
+
+user_home: "/home/{{ user.name }}"
+config_dir: "{{ user_home }}/.config"

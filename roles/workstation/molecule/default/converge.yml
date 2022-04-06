@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include regrau.workstation"
+      include_role:
+        name: "regrau.workstation"

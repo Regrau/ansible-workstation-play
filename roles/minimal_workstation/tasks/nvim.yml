@@ -1,0 +1,8 @@
+---
+
+- name: link nvim directory
+  ansible.builtin.ln:
+    src: nvim
+    dest: "{{ config_dir }}/nvim"
+
+

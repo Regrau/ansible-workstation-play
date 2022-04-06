@@ -1,0 +1,18 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+platforms:
+  - name: instance
+    box: "opensuse/Tumbleweed.x86_64"
+    cpus: 4
+    memory: 4096
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../../../../minimal_workstation.yml
+verifier:
+  name: ansible
