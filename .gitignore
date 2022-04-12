@@ -110,6 +110,7 @@ ENV/
 env.bak/
 venv.bak/
 ansible-venv
+ansible_venv
 
 # Spyder project settings
 .spyderproject

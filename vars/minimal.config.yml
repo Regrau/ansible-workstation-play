@@ -7,8 +7,6 @@ base_packages:
   - zsh
   - git
   - fzf
-  - fzf-zsh-completion
-  - terminfo
 
 user:
   name: regrau

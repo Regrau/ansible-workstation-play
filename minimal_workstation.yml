@@ -4,25 +4,29 @@
     - minimal.config.yml
 
   pre_tasks:
+    - name: Make sure wheel group exists
+      ansible.builtin.group:
+        name: "wheel"
+        state: present
+      become: True
     - name: Create the user
       ansible.builtin.user:
-        name: "{{ user.name}}"
+        name: "{{ user.name }}"
         comment: "{{ user.full_name }}"
-        uid: 1050
+        uid: 1000
         groups:
-          - users
+          - wheel
         create_home: True
         shell: /bin/zsh
         state: present
-      become: yes
+      become: True
 
     - name: Allow for passwordless sudo for {{ user.name }}
       ansible.builtin.copy:
         content: "{{ user.name }} ALL=(ALL:ALL) NOPASSWD: ALL"
         dest: "/etc/sudoers.d/{{ user.name }}_nopasswd"
         mode: 0440
-      become: yes
-
+      become: True
   roles:
     - role: minimal_workstation
     

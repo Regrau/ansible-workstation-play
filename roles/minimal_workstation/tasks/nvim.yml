@@ -1,8 +1,12 @@
 ---
 
 - name: link nvim directory
-  ansible.builtin.ln:
-    src: nvim
+  ansible.builtin.copy:
+    src: nvim/
     dest: "{{ config_dir }}/nvim"
 
-
+- name: clone packer
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: "{{ packer_path }}"
+    depth: 1

@@ -11,7 +11,6 @@
   file:
     path: "{{ config_dir }}/ohmyzsh/custom/{{ item }}"
     owner: "{{ user.name }}"
-    group: users
     state: directory
   loop:
     - plugins
@@ -23,7 +22,6 @@
     src: zsh/custom/
     dest: "{{ config_dir }}/ohmyzsh/custom"
     owner: "{{ user.name }}"
-    group: users
     mode: preserve
 
 - name: install powerlvl10k prompt

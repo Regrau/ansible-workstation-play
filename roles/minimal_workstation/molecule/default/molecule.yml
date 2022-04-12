@@ -7,7 +7,7 @@ driver:
     name: libvirt
 platforms:
   - name: instance
-    box: "opensuse/Tumbleweed.x86_64"
+    box: "fedora/36-beta-cloud-base"
     cpus: 4
     memory: 4096
 provisioner:

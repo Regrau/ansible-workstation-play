@@ -1,0 +1,13 @@
+{
+    "ansible.python.interpreterPath": "ansible_venv/bin/python3",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "ansible_venv": true
+    },
+    "files.associations": {"*.yml": "ansible"}
+}

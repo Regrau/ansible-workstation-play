@@ -6,7 +6,7 @@
     name: "{{ item }}"
     state: latest
   loop: "{{ base_packages }}"
-  become: yes
+  become: true
 
 - name: Setup zsh
   ansible.builtin.import_tasks: "zsh.yml"
@@ -16,6 +16,11 @@
 - name: Setup neovim
   ansible.builtin.import_tasks: "nvim.yml"
   become: true
-    become_user: "{{ user.name }}"
+  become_user: "{{ user.name }}"
 
-
+- name: Add local/bin directory to PATH
+  ansible.builtin.copy:
+    src: system_config/profile
+    dest: "{{ user_home }}/.profile"
+  become: true
+  become_user: "{{ user.name }}"
