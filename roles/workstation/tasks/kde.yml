@@ -1,0 +1,16 @@
+---
+- name: Install the plasma desktop
+  ansible.builtin.dnf:
+    name: "@KDE Plasma Workspaces"
+    state: present
+
+- name: Enable bismuths copr repo
+  community.general.copr:
+    name: "capucho/bismuth"
+    state: present
+
+- name: Install bismuth tiling scripts
+  ansible.builtin.package:
+    name: "bismuth"
+    state: latest
+  become: true

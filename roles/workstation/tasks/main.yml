@@ -1,2 +1,8 @@
 ---
 # tasks file for workstation
+
+- name: Install nerd fonts
+  ansible.builtin.unarchive:
+    src: "{{ font_download_url }}"
+    remote_src: yes
+    dest: /usr/share/fonts
