@@ -6,3 +6,14 @@
     src: "{{ font_download_url }}"
     remote_src: yes
     dest: /usr/share/fonts
+  become: true
+
+- name: Set graphical as default target
+  ansible.builtin.file:
+    src: /usr/lib/systemd/system/graphical.target
+    dest: /etc/systemd/system/default.target
+    state: link
+  become: True
+
+- name: Install KDE
+  ansible.builtin.import_tasks: "kde.yml"

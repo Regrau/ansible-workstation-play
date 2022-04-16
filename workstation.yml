@@ -1,0 +1,10 @@
+- hosts: all
+  vars_files:
+    - minimal.config.yml
+    - cli_workstation.yml
+    - workstation.config.yml
+  
+  roles:
+    - role: minimal_workstation
+    - role: cli_workstation
+    - role: workstation

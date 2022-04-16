@@ -1,6 +1,30 @@
 ---
 # tasks file for minimal_workstation
 
+- name: Make sure wheel group exists
+  ansible.builtin.group:
+    name: "wheel"
+    state: present
+  become: True
+- name: Create the user
+  ansible.builtin.user:
+    name: "{{ user.name }}"
+    comment: "{{ user.full_name }}"
+    uid: 1000
+    groups:
+      - wheel
+    create_home: True
+    shell: /bin/zsh
+    state: present
+  become: True
+
+- name: Allow for passwordless sudo for {{ user.name }}
+  ansible.builtin.copy:
+    content: "{{ user.name }} ALL=(ALL:ALL) NOPASSWD: ALL"
+    dest: "/etc/sudoers.d/{{ user.name }}_nopasswd"
+    mode: 0440
+  become: True
+
 - name: Install base packages
   ansible.builtin.package:
     name: "{{ item }}"
@@ -18,7 +42,7 @@
   become: true
   become_user: "{{ user.name }}"
 
-- name: Add local/bin directory to PATH
+- name: Define custom profile
   ansible.builtin.copy:
     src: system_config/profile
     dest: "{{ user_home }}/.profile"

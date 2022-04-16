@@ -3,14 +3,21 @@
   ansible.builtin.dnf:
     name: "@KDE Plasma Workspaces"
     state: present
+  become: true
 
 - name: Enable bismuths copr repo
   community.general.copr:
     name: "capucho/bismuth"
-    state: present
+    state: enabled
+  become: true
 
 - name: Install bismuth tiling scripts
   ansible.builtin.package:
     name: "bismuth"
     state: latest
   become: true
+
+- name: setup configuration for kwin
+  ansible.builtin.copy:
+    src: "kde/kwinrc"
+    dest: "{{ config_dir }}/kwinrc"
