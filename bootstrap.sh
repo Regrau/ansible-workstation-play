@@ -17,4 +17,4 @@ pip3 install ansible \
              molecule \
              molecule_vagrant
 
-ansible-playbook -i inventory $1
+ansible-playbook --ask-become-pass -i inventory $1
