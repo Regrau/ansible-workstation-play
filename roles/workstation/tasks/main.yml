@@ -23,3 +23,6 @@
 
 - name: Deploy AWS Cli V2
   ansible.builtin.import_tasks: "aws_cli_v2.yml"
+
+- name: Install 1Password
+  ansible.builtin.import_tasks: "1password.yml"
