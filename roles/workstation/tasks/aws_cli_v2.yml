@@ -1,0 +1,25 @@
+---
+- name: Download awscliv2 installer.
+  vars:
+    executable_temp_dir: /tmp
+  unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-{{ ansible_local.aws_cli.new_version }}.zip
+    dest: "/tmp"
+    remote_src: true
+    mode: 0755
+  when: ansible_local.aws_cli.action == "update" or ansible_local.aws_cli.action == "install"
+
+- name: Run the installer.
+  command:
+  args:
+    cmd: "/tmp/aws/install"
+    creates: /usr/local/bin/aws
+  become: true
+  when: ansible_local.aws_cli.action == "install"
+
+- name: Update aws cli to latest
+  command:
+  args  :
+    cmd: "/tmp/aws/install --update"
+  become: true
+  when: ansible_local.aws_cli.action == "update"

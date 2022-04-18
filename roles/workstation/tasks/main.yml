@@ -20,3 +20,6 @@
 
 - name: Install tmux
   ansible.builtin.import_tasks: "tmux.yml"
+
+- name: Deploy AWS Cli V2
+  ansible.builtin.import_tasks: "aws_cli_v2.yml"

@@ -3,6 +3,25 @@
     - minimal.config.yml
     - cli_workstation.yml
     - workstation.config.yml
+
+  pre_tasks:
+    - name: "Ensure custom facts dir exists"
+      ansible.builtin.file:
+        path: /etc/ansible/facts.d
+        recurse: yes
+        state: directory
+      become: True
+
+    - name: "Distribute facts"
+      ansible.builtin.copy:
+        src: facts/
+        dest: /etc/ansible/facts.d/
+        mode: '0755'
+      become: True
+
+    - name: "Update facts"
+      ansible.builtin.setup:
+      become: True
   
   roles:
     - role: minimal_workstation

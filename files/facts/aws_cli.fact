@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+
+import json
+import requests
+import subprocess
+from packaging import version
+"""
+This is based on the assumption that github will always return
+the latest tag with the latest version on the first position
+the returned list.
+It's brittle but I don't wanna workaround that for now.
+
+The api returns the tags sorted alphabetically by name
+like git itself does. So any deviation from the semantic
+tag naming standard on AWS's side will lead to problems
+"""
+
+def _get_new_version():
+    AWS_CLI_VERSIONS_URL = "https://api.github.com/repos/aws/aws-cli/tags"
+    resp = requests.get(AWS_CLI_VERSIONS_URL)
+    latest_tag = resp.json()[0]
+    return latest_tag.get("name")
+
+def _get_old_version():
+    output = ""
+    try:
+        output = subprocess.run(["/usr/local/bin/aws", "--version"], capture_output=True, text=True).stdout
+        output = output.split(" ")[0].split("/")[1]
+    except FileNotFoundError:
+        pass
+    return output
+
+def _determine_action(old_version, new_version):
+    action = "keep"
+    if version.parse(old_version) < version.parse(new_version):
+        action = "update"
+    if old_version == "":
+        action = "install"
+    return action
+
+old_version = _get_old_version()
+new_version = _get_new_version()
+action = _determine_action(old_version, new_version)
+
+print(json.dumps({
+    "new_version": new_version,
+    "old_version": old_version,
+    "action": action
+}))
+    
