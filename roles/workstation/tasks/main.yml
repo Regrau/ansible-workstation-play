@@ -17,3 +17,6 @@
 
 - name: Install KDE
   ansible.builtin.import_tasks: "kde.yml"
+
+- name: Install tmux
+  ansible.builtin.import_tasks: "tmux.yml"

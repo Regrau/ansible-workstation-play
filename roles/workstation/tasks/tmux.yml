@@ -1,0 +1,21 @@
+---
+- name: Install tmux
+  ansible.builtin.package:
+    name: tmux
+    state: latest
+  become: true
+
+- name: Install tmux plugin manager
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ user_home }}/.tmux/plugins/tpm"
+
+- name: copy configuration file to tmux
+  ansible.builtin.copy:
+    src: tmux.conf
+    dest: "{{ user_home }}/.tmux.conf"
+    owner: regrau
+    mode: '0644'
+
+- name: install plugin manager plugins
+  ansible.builtin.command:  creates=~/.tmux/plugins/tmux-sensible ~/.tmux/plugins/tpm/bin/install_plugins
