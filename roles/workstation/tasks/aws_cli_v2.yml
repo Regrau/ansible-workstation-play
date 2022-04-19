@@ -23,3 +23,9 @@
     cmd: "/tmp/aws/install --update"
   become: true
   when: ansible_local.aws_cli.action == "update"
+
+- name: Download Systemsmanager Plugin
+  ansible.builtin.dnf:
+    name: "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm"
+    state: present
+  become: True
