@@ -1,5 +1,7 @@
+---
 - hosts: all
   vars_files:
+    - defaults/main.yml
     - minimal.config.yml
     - cli_workstation.yml
     - workstation.config.yml
@@ -8,22 +10,30 @@
     - name: "Ensure custom facts dir exists"
       ansible.builtin.file:
         path: /etc/ansible/facts.d
-        recurse: yes
         state: directory
-      become: True
+        mode: '0755'
+      become: true
 
     - name: "Distribute facts"
       ansible.builtin.copy:
         src: facts/
         dest: /etc/ansible/facts.d/
         mode: '0755'
-      become: True
+      become: true
 
     - name: "Update facts"
       ansible.builtin.setup:
-      become: True
-  
+
   roles:
+    - role: geerlingguy.mac.homebrew
+      when: ansible_system == "Darwin"
+    - role: geerlingguy.mac.mas
+      when: ansible_system == "Darwin"
+    - role: geerlingguy.mac.dock
+      when: ansible_system == "Darwin"
     - role: minimal_workstation
+      when: ansible_system == "Linux"
     - role: cli_workstation
+      when: ansible_system == "Linux"
     - role: workstation
+      when: ansible_system == "Linux"

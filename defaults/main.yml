@@ -1,0 +1,65 @@
+---
+homebrew_installed_packages:
+  - git
+  - go
+  - php
+  - wireguard-tools
+  - lima
+  - nativefier
+  - tmux
+  - neovim
+  - qemu
+  - dockutil
+  - kubectl
+  - helm
+  - skhd
+
+mas_installed_apps:
+  - id: 585829637
+    name: "Todoist"
+  - id: 1451685025
+    name: "Wireguard"
+  - id: 747648890
+    name: "Telegram"
+  - id: 441258766
+    name: "Magnet"
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - "google-chrome"
+  - "alfred"
+  - "karabiner-elements"
+  - "visual-studio-code"
+  - "jetbrains-toolbox"
+  - "tunnelblick"
+  - "hpedrorodrigues/tools/dockutil"
+  - "kitty"
+  - "homebrew/cask-fonts/font-agave-nerd-font"
+
+install_dockutil: false
+dockitems_remove:
+  - Launchpad
+  - Safari
+  - Messages
+  - Mail
+  - Maps
+  - Photos
+  - FaceTime
+  - Calendar
+  - Contacts
+  - Reminders
+  - Notes
+  - Podcasts
+  - "App Store"
+  - "System Preferences"
+
+dockitems_persist:
+  - name: "Discord"
+    path: "/Applications/Discord.app"
+    position: 1
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app"
+    position: 2
+  - name: "Todoist"
+    path: "/Applications/Todoist.app"
+    position: 3
