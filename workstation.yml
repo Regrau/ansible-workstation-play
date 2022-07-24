@@ -44,7 +44,7 @@
     - role: kitty
       tags: [kitty]
     - role: mac_gui
-      tags: [master]
+      tags: [mac_gui]
       when: ansible_system == "Darwin"
     - role: minimal_workstation
       when: ansible_system == "Linux"
