@@ -1,3 +1,2 @@
 ---
 # defaults file for minimal_workstation
-packer_path: "{{ user_home }}/.local/share/nvim/site/pack/packer/start/packer.nvim"

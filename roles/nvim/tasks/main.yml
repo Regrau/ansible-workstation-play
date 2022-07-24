@@ -1,0 +1,13 @@
+---
+- name: Copy nvim directory
+  ansible.builtin.copy:
+    src: nvim/
+    dest: "~/.config/nvim"
+    mode: 0750
+
+- name: Install packer
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: "~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    version: master
+    depth: 1

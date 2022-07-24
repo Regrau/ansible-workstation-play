@@ -39,6 +39,8 @@
       tags: [zsh]
     - role: aws_cli
       tags: [aws_cli]
+    - role: nvim
+      tags: [nvim]
     - role: kitty
       tags: [kitty]
     - role: mac_gui
