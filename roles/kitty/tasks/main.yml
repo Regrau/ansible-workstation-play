@@ -16,3 +16,4 @@
     src: kitty.conf.j2
     dest: "~/.config/kitty/kitty.conf"
     mode: 0640
+  notify: Reload kitty config

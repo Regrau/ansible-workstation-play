@@ -1,0 +1,4 @@
+---
+- name: Reload kitty config
+  ansible.builtin.command:
+    cmd: pkill -USR1 kitty
