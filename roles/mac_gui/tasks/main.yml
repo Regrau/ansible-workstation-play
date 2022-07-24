@@ -1,0 +1,14 @@
+---
+- name: Copy osx.sh to host
+  ansible.builtin.copy:
+    src: osx.sh
+    dest: "~/.config/osx.sh"
+    mode: 0744
+  register: osx_config
+
+
+- name: Execute configuration script
+  ansible.builtin.script:
+    cmd: files/osx.sh
+  when: osx_config.changed
+  tags: [skip_ansible_lint]
