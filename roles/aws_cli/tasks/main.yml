@@ -1,0 +1,4 @@
+---
+- name: Install Macos version
+  ansible.builtin.include_tasks: aws-cli-macos.yml
+  when: ansible_system == "Darwin"

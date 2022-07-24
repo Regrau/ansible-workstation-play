@@ -1,0 +1,5 @@
+---
+- name: Install AWS cli
+  community.general.homebrew:
+    name: awscli
+    state: present

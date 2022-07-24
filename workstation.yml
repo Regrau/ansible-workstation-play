@@ -33,6 +33,7 @@
       when: ansible_system == "Darwin"
     - role: zsh
       when: ansible_system == "Darwin" or ansible_system == "Linux"
+    - role: aws_cli
     - role: minimal_workstation
       when: ansible_system == "Linux"
     - role: cli_workstation
