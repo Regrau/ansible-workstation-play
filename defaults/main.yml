@@ -9,7 +9,6 @@ homebrew_installed_packages:
   - tmux
   - neovim
   - qemu
-  - dockutil
   - kubectl
   - helm
   - skhd
