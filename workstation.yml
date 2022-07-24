@@ -27,15 +27,22 @@
   roles:
     - role: geerlingguy.mac.homebrew
       when: ansible_system == "Darwin"
+      tags: [homebrew]
     - role: geerlingguy.mac.mas
       when: ansible_system == "Darwin"
+      tags: [mas]
     - role: geerlingguy.mac.dock
       when: ansible_system == "Darwin"
+      tags: [dock]
     - role: zsh
       when: ansible_system == "Darwin" or ansible_system == "Linux"
+      tags: [zsh]
     - role: aws_cli
+      tags: [aws_cli]
     - role: kitty
+      tags: [kitty]
     - role: mac_gui
+      tags: [master]
       when: ansible_system == "Darwin"
     - role: minimal_workstation
       when: ansible_system == "Linux"
