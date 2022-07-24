@@ -34,6 +34,7 @@
     - role: zsh
       when: ansible_system == "Darwin" or ansible_system == "Linux"
     - role: aws_cli
+    - role: kitty
     - role: mac_gui
       when: ansible_system == "Darwin"
     - role: minimal_workstation

@@ -62,3 +62,5 @@ dockitems_persist:
   - name: "Todoist"
     path: "/Applications/Todoist.app"
     position: 3
+
+kitty_theme: VibrantInk
