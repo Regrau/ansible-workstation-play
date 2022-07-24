@@ -5,12 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export ZSH="/home/regrau/.oh-my-zsh"
+{% if ansible_system == "Darwin" %}
+export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"
+{% endif %}
+
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.config/ohmyzsh/custom"
 fpath=($ZSH_CUSTOM/completions $fpath)
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git terraform kubectl aws fzf fzf-tab)
+plugins=(git terraform kubectl aws fzf fzf-tab helm)
 
 source $ZSH/oh-my-zsh.sh
 
