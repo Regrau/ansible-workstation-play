@@ -4,7 +4,7 @@
 - name: Install nerd fonts
   ansible.builtin.unarchive:
     src: "{{ font_download_url }}"
-    remote_src: yes
+    remote_src: true
     dest: /usr/share/fonts
   become: true
 
@@ -13,7 +13,7 @@
     src: /usr/lib/systemd/system/graphical.target
     dest: /etc/systemd/system/default.target
     state: link
-  become: True
+  become: true
 
 - name: Install KDE
   ansible.builtin.import_tasks: "kde.yml"

@@ -5,7 +5,7 @@
   ansible.builtin.group:
     name: "wheel"
     state: present
-  become: True
+  become: true
 - name: Create the user
   ansible.builtin.user:
     name: "{{ user.name }}"
@@ -13,17 +13,17 @@
     uid: 1000
     groups:
       - wheel
-    create_home: True
+    create_home: true
     shell: /bin/zsh
     state: present
-  become: True
+  become: true
 
 - name: Allow for passwordless sudo for {{ user.name }}
   ansible.builtin.copy:
     content: "{{ user.name }} ALL=(ALL:ALL) NOPASSWD: ALL"
     dest: "/etc/sudoers.d/{{ user.name }}_nopasswd"
     mode: 0440
-  become: True
+  become: true
 
 - name: Install base packages
   ansible.builtin.package:

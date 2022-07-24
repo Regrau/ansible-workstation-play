@@ -4,20 +4,20 @@
   ansible.builtin.yum_repository:
     name: "Kubernetes"
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-    enabled: True
+    enabled: true
     state: present
     baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
     description: Official google repository for K8S
-  become: True
+  become: true
 
 - name: Install Kubectl
   ansible.builtin.package:
     name: kubectl
     state: latest
-  become: True
+  become: true
 
 - name: Install kubectl completion
   ansible.builtin.shell:
     cmd: "kubectl completion zsh > /usr/share/zsh/site-functions/_kubectl"
     creates: /usr/share/zsh/site-functions/_kubectl
-  become: True
+  become: true
