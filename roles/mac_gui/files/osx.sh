@@ -11,6 +11,10 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 
 
 # Finder preferences
+
+# Don't rearrange spaces by recent use
+defaults write com.apple.dock mru-spaces -bool false
+
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
