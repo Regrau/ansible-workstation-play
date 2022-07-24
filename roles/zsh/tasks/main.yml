@@ -1,4 +1,10 @@
 ---
+- name: Ensure local bin directory exists
+  ansible.builtin.file:
+    path: "~/.local/bin"
+    state: directory
+    mode: 0750
+
 - name: install oh my zsh
   ansible.builtin.git:
     repo: https://github.com/ohmyzsh/ohmyzsh.git
