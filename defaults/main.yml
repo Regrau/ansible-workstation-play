@@ -22,6 +22,8 @@ mas_installed_apps:
     name: "Telegram"
   - id: 441258766
     name: "Magnet"
+  - id: 937984704
+    name: "Amphetamine"
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
